@@ -1,7 +1,8 @@
 import 'package:amazone_clone_flutter/components/custom_surfix_icon.dart';
 import 'package:amazone_clone_flutter/components/default_button.dart';
 import 'package:amazone_clone_flutter/components/form_error.dart';
-import 'package:amazone_clone_flutter/screens/complete_profile/complete_profile_screen.dart';
+import 'package:amazone_clone_flutter/screens/home/home_screen.dart';
+import 'package:amazone_clone_flutter/services/auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -19,6 +20,7 @@ class _SignUpFormState extends State<SignUpForm> {
   String confirmPassword;
   bool remember = false;
   final List<String> errors = [];
+  AuthService _authService = AuthService();
 
   void addError({String error}) {
     if (!errors.contains(error))
@@ -49,11 +51,17 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                //register auth firebase user
+                dynamic result = await _authService.registerUser(
+                    email: email, password: password, addError: addError);
+                if (result != null) {
+                  // if all are valid and user is registered then go to success screen
+                  // Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                  Navigator.pushNamed(context, HomeScreen.routeName);
+                }
               }
             },
           ),
@@ -104,6 +112,7 @@ class _SignUpFormState extends State<SignUpForm> {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
+          removeError(error: kWeekPasswordError);
         }
         password = value;
       },
@@ -135,6 +144,7 @@ class _SignUpFormState extends State<SignUpForm> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
+          removeError(error: kAccountAlreadyExistsError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }

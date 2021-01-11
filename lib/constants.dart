@@ -33,6 +33,11 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
+const String kWeekPasswordError = "The password provided is too weak.";
+const String kAccountAlreadyExistsError =
+    "The account already exists for that email.";
+const String kUserNotFoundError = "No user found for that email.";
+const String kWrongPassError = "Wrong password provided for that user.";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

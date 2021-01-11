@@ -31,16 +31,18 @@ class Body extends StatelessWidget {
                   children: [
                     SocialCard(
                       icon: "assets/icons/google-icon.svg",
-                      press: () {},
+                      press: () {
+                        //TODO: use firebase google sign in auth here.
+                      },
                     ),
-                    SocialCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    SocialCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
+                    // SocialCard(
+                    //   icon: "assets/icons/facebook-2.svg",
+                    //   press: () {},
+                    // ),
+                    // SocialCard(
+                    //   icon: "assets/icons/twitter.svg",
+                    //   press: () {},
+                    // ),
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),

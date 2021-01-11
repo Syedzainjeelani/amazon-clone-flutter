@@ -1,4 +1,5 @@
 import 'package:amazone_clone_flutter/components/default_button.dart';
+import 'package:amazone_clone_flutter/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -109,7 +110,9 @@ class _OtpFormState extends State<OtpForm> {
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, HomeScreen.routeName);
+            },
           )
         ],
       ),
