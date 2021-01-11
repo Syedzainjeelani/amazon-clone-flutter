@@ -36,15 +36,15 @@ class _BodyState extends State<Body> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SocalCard(
+                  SocialCard(
                     icon: "assets/icons/google-icon.svg",
                     press: () {},
                   ),
-                  SocalCard(
+                  SocialCard(
                     icon: "assets/icons/facebook-2.svg",
                     press: () {},
                   ),
-                  SocalCard(
+                  SocialCard(
                     icon: "assets/icons/twitter.svg",
                     press: () {},
                   ),

@@ -1,3 +1,5 @@
+import 'package:amazone_clone_flutter/screens/home/home_screen.dart';
+import 'package:amazone_clone_flutter/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,15 +39,17 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                // onPressed: () =>
-                // Navigator.pushNamed(context, HomeScreen.routeName),
-              ),
+                  icon: SvgPicture.asset(
+                    "assets/icons/Shop Icon.svg",
+                    color: MenuState.home == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () {
+                    if (MenuState.home != selectedMenu) {
+                      Navigator.pushNamed(context, HomeScreen.routeName);
+                    }
+                  }),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
                 onPressed: () {},
@@ -61,8 +65,8 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                // onPressed: () =>
-                // Navigator.pushNamed(context, ProfileScreen.routeName),
+                onPressed: () =>
+                    Navigator.pushNamed(context, ProfileScreen.routeName),
               ),
             ],
           )),

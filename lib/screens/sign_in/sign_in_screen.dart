@@ -1,4 +1,3 @@
-import 'package:amazone_clone_flutter/constants.dart';
 import 'package:amazone_clone_flutter/screens/sign_in/components/body.dart';
 import 'package:flutter/material.dart';
 
